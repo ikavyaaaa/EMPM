@@ -11,7 +11,11 @@ import SwiftData
 struct ContentView: View {
 
     var body: some View {
-        Text("Hello, World!")
+        VStack(spacing: 0) {
+            Spacer()
+            TabBarView()
+        }
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 

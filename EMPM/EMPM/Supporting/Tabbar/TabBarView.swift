@@ -88,7 +88,7 @@ enum Tab: Int, Identifiable, CaseIterable, Comparable {
         lhs.rawValue < rhs.rawValue
     }
     
-    case home, game, apps, movie
+    case home, emplopyees, video, more
     
     internal var id: Int { rawValue }
     
@@ -96,38 +96,12 @@ enum Tab: Int, Identifiable, CaseIterable, Comparable {
         switch self {
         case .home:
             return "house.fill"
-        case .game:
-            return "gamecontroller.fill"
-        case .apps:
-            return "square.stack.3d.up.fill"
-        case .movie:
-            return "play.tv.fill"
-        }
-    }
-    
-    var title: String {
-        switch self {
-        case .home:
-            return "Home"
-        case .game:
-            return "Employees"
-        case .apps:
-            return "Video"
-        case .movie:
-            return "More"
-        }
-    }
-    
-    var color: Color {
-        switch self {
-        case .home:
-            return .indigo
-        case .game:
-            return .pink
-        case .apps:
-            return .orange
-        case .movie:
-            return .teal
+        case .emplopyees:
+            return "person.crop.circle.fill"
+        case .video:
+            return "video.fill"
+        case .more:
+            return "ellipsis"
         }
     }
 }
