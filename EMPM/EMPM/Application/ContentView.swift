@@ -18,6 +18,7 @@ struct ContentView: View {
                     switch selectedTab {
                     case .home:
                         HomeView()
+                            .background(.primaryBackground)
                     case .emplopyees:
                         EmployeesView()
                     case .video:
@@ -29,40 +30,39 @@ struct ContentView: View {
                 .edgesIgnoringSafeArea(.all)
                 
                 TabBarView(selectedTab: $selectedTab, namespace: namespace)
-                    .padding(.bottom, 10)
             }
         }
 }
 
 struct HomeView: View {
     var body: some View {
-        Color.blue
+        Color.primaryBackground
             .ignoresSafeArea()
-            .overlay(Text("Home").font(.largeTitle).foregroundColor(.white))
+            .overlay(Text("Home").font(.largeTitle).foregroundColor(.red))
     }
 }
 
 struct EmployeesView: View {
     var body: some View {
-        Color.green
+        Color.primaryBackground
             .ignoresSafeArea()
-            .overlay(Text("Employees").font(.largeTitle).foregroundColor(.white))
+            .overlay(Text("Employees").font(.largeTitle).foregroundColor(.red))
     }
 }
 
 struct VideoView: View {
     var body: some View {
-        Color.orange
+        Color.primaryBackground
             .ignoresSafeArea()
-            .overlay(Text("Video").font(.largeTitle).foregroundColor(.white))
+            .overlay(Text("Video").font(.largeTitle).foregroundColor(.red))
     }
 }
 
 struct MoreView: View {
     var body: some View {
-        Color.purple
+        Color.primaryBackground
             .ignoresSafeArea()
-            .overlay(Text("More").font(.largeTitle).foregroundColor(.white))
+            .overlay(Text("More").font(.largeTitle).foregroundColor(.red))
     }
 }
 
