@@ -1,5 +1,5 @@
 //
-//  TabBarView1.swift
+//  TabBarView.swift
 //  EMPM
 //
 //  Created by Kavya Krishna K. on 10/04/25.
@@ -15,8 +15,9 @@ struct TabBarView: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .fill(.white)
+                .fill(.primaryBackground)
                 .shadow(color: .gray.opacity(0.4), radius: 20, x: 0, y: 20)
+                .padding(.bottom, 0)
             
             TabsLayoutView(selectedTab: $selectedTab, namespace: namespace)
         }
