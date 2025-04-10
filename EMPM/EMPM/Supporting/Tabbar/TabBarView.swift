@@ -9,38 +9,38 @@
 import SwiftUI
 
 struct TabBarView: View {
-    
+    @Binding var selectedTab: Tab
+    var namespace: Namespace.ID
+
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20, style: .continuous)
                 .fill(.white)
                 .shadow(color: .gray.opacity(0.4), radius: 20, x: 0, y: 20)
             
-            TabsLayoutView()
+            TabsLayoutView(selectedTab: $selectedTab, namespace: namespace)
         }
         .frame(height: 70, alignment: .center)
     }
 }
 
 fileprivate struct TabsLayoutView: View {
-    @State var selectedTab: Tab = .home
-    @Namespace var namespace
-    
+    @Binding var selectedTab: Tab
+    var namespace: Namespace.ID
+
     var body: some View {
         HStack {
             Spacer(minLength: 0)
             
             ForEach(Tab.allCases) { tab in
                 TabButton(tab: tab, selectedTab: $selectedTab, namespace: namespace)
-                    .frame(width: 65, height: 65, alignment: .center)
+                    .frame(width: 65, height: 65)
                 
                 Spacer(minLength: 0)
             }
         }
     }
-    
-    
-    
+
     private struct TabButton: View {
         let tab: Tab
         @Binding var selectedTab: Tab
@@ -63,7 +63,6 @@ fileprivate struct TabsLayoutView: View {
                             }
                             .offset(y: -40)
                             .matchedGeometryEffect(id: "Selected Tab", in: namespace)
-                            .animation(.spring(), value: selectedTab)
                     }
                     
                     Image(systemName: tab.icon)
@@ -71,7 +70,6 @@ fileprivate struct TabsLayoutView: View {
                         .foregroundColor(isSelected ? .init(white: 0.9) : .gray)
                         .scaleEffect(isSelected ? 1 : 0.8)
                         .offset(y: isSelected ? -40 : 0)
-                        .animation(isSelected ? .spring(response: 0.5, dampingFraction: 0.3, blendDuration: 1) : .spring(), value: selectedTab)
                 }
             }
             .buttonStyle(.plain)
@@ -89,7 +87,6 @@ enum Tab: Int, Identifiable, CaseIterable, Comparable {
     }
     
     case home, emplopyees, video, more
-    
     internal var id: Int { rawValue }
     
     var icon: String {
@@ -97,18 +94,11 @@ enum Tab: Int, Identifiable, CaseIterable, Comparable {
         case .home:
             return "house.fill"
         case .emplopyees:
-            return "person.crop.circle.fill"
+            return "person"
         case .video:
             return "video.fill"
         case .more:
             return "ellipsis"
         }
-    }
-}
-
-struct TabBarView1_Previews: PreviewProvider {
-    static var previews: some View {
-        TabBarView()
-            .padding(.bottom, 10)
     }
 }
